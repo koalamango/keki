@@ -2,6 +2,9 @@
 
 A Gatsbyjs Contentful Snipcart Starter
 
+![Kēki - Artisan Cakes](keki-preview.png)
+
+
 ### Getting start
 
 Create `.env` on root.
