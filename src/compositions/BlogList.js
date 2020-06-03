@@ -9,6 +9,7 @@ const Posts = styled.div`
   h2 {
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    margin-bottom: 10px;
   }
   a {
     width: 100%;
@@ -21,8 +22,7 @@ const Posts = styled.div`
   }
 `;
 const Post = styled.div`
-  width: 100%;
-  padding: 0 15px;
+  margin-bottom: 50px;
   .gatsby-image-wrapper {
     max-height: 300px;
   }

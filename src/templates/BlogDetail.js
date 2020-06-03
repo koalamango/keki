@@ -5,9 +5,10 @@ import { DiscussionEmbed } from 'disqus-react';
 import styled from 'styled-components';
 import Layout from '../compositions/Layout';
 
-const disqusShortname = 'keki';
+const disqusShortname = 'Keki';
 
 const Wrapper = styled.div`
+  padding: 0 15px;
   .gatsby-image-wrapper {
     max-height: 500px;
   }
@@ -23,7 +24,7 @@ const Author = styled.div`
   
 `;
 
-const Post = data => (
+const BlogDetail = data => (
   <Layout>
     <Wrapper>
       <Img
@@ -58,7 +59,7 @@ const Post = data => (
   </Layout>
 );
 
-export default Post;
+export default BlogDetail;
 
 export const query = graphql`
   query BlogQuery($slug: String!) {

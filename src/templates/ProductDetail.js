@@ -10,6 +10,7 @@ import { COLORS, TYPOGRAPHY } from '../compositions/constants';
 const Image = styled.div``;
 const Summary = styled.div``;
 const Wrapper = styled.div`
+  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   ${MEDIA.MIN_TABLET`
@@ -36,7 +37,7 @@ const Banner = styled.div`
   }
 `;
 
-const Product = data => (
+const ProductDetail = data => (
   <Layout>
     <Wrapper>
       <Image>
@@ -87,7 +88,7 @@ const Product = data => (
   </Layout>
 );
 
-export default Product;
+export default ProductDetail;
 
 export const query = graphql`
   query ProductQuery($slug: String!) {

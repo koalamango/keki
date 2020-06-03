@@ -48,8 +48,8 @@ exports.createPages = ({ graphql, actions }) => {
       if (result.errors) {
         console.log('Error retrieving contentful data', result.errors);
       }
-      const productTemplate = path.resolve('./src/templates/product.js');
-      const blogTemplate = path.resolve('./src/templates/post.js');
+      const productTemplate = path.resolve('./src/templates/ProductDetail.js');
+      const blogTemplate = path.resolve('./src/templates/BlogDetail.js');
 
       result.data.allContentfulProduct.edges.forEach(edge => {
         createPage({
