@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from 'compositions/Layout';
 import styled from 'styled-components';
-import MEDIA from '../compositions/helpers/mediaTemplates';
-import BlogList from '../compositions/BlogList';
-import SideBar from '../compositions/SideBar';
+import MEDIA from '@components/helpers/mediaTemplates';
+import BlogList from '@components/BlogList';
+import SideBar from '@components/SideBar';
 
 const Wrapper = styled.div`
   width: 100%;

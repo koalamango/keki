@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import MEDIA from './helpers/mediaTemplates';
-import { COLORS, TYPOGRAPHY } from './constants';
+import MEDIA from '@components/helpers/mediaTemplates';
+import { COLORS, TYPOGRAPHY } from '@components/constants';
 
 const Products = styled.div`
   display: flex;

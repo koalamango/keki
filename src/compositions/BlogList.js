@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { COLORS, TYPOGRAPHY } from './constants';
+import { COLORS, TYPOGRAPHY } from '@components/constants';
 
 const Posts = styled.div`
   h2 {

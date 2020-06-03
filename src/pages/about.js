@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from 'compositions/Layout';
+import Layout from '@components/Layout';
 import styled from 'styled-components';
-import MEDIA from '../compositions/helpers/mediaTemplates';
-import SideBar from '../compositions/SideBar';
+import MEDIA from '@components/helpers/mediaTemplates';
+import SideBar from '@components/SideBar';
 import { graphql } from 'gatsby';
 
 const Wrapper = styled.div`

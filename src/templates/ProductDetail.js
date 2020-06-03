@@ -3,9 +3,9 @@ import StarRatingComponent from 'react-star-rating-component';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import Layout from '../compositions/Layout';
-import MEDIA from '../compositions/helpers/mediaTemplates';
-import { COLORS, TYPOGRAPHY } from '../compositions/constants';
+import Layout from '@components/Layout';
+import MEDIA from '@components/helpers/mediaTemplates';
+import { COLORS, TYPOGRAPHY } from '@components/constants';
 
 const Image = styled.div``;
 const Summary = styled.div``;

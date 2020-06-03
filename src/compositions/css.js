@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { COLORS, TYPOGRAPHY, UTILITIES } from 'compositions/constants';
-import MEDIA from 'compositions/helpers/mediaTemplates';
+import { COLORS, TYPOGRAPHY, UTILITIES } from '@components/constants';
+import MEDIA from '@components/helpers/mediaTemplates';
 
 export default createGlobalStyle`
   html, body, div, span, applet, object, iframe, pre,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 import { Location } from '@reach/router';
-import schemaGenerator from 'compositions/helpers/schemaGenerator';
+import schemaGenerator from '@components/helpers/schemaGenerator';
 
 const Head = ({
   siteTitle,

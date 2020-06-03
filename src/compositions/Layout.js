@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import posed from 'react-pose';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from 'styled-components';
-import Box from 'compositions/Box';
-import { COLORS, TYPOGRAPHY, UTILITIES } from 'compositions/constants';
-import GlobalStyle from 'compositions/css';
-import Head from 'compositions/Head';
-import LogoImg from 'compositions/images/logo.png';
-import MEDIA from 'compositions/helpers/mediaTemplates';
+import Box from '@components/Box';
+import { COLORS, TYPOGRAPHY, UTILITIES } from '@components/constants';
+import GlobalStyle from '@components/css';
+import Head from '@components/Head';
+import LogoImg from '@components/images/logo.png';
+import MEDIA from '@components/helpers/mediaTemplates';
 
 const AnimatedContainer = posed.div({
   enter: {

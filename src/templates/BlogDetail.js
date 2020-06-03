@@ -3,7 +3,7 @@ import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
 import { DiscussionEmbed } from 'disqus-react';
 import styled from 'styled-components';
-import Layout from '../compositions/Layout';
+import Layout from '@components/Layout';
 
 const disqusShortname = 'Keki';
 

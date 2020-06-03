@@ -1,6 +1,6 @@
 import React from 'react';
-import AppProvider from 'compositions/store/provider';
-import wrapPageElementWithTransition from 'compositions/helpers/wrapPageElement';
+import AppProvider from '@components/store/provider';
+import wrapPageElementWithTransition from '@components/helpers/wrapPageElement';
 
 // React Context in Browser
 // eslint-disable-next-line react/prop-types

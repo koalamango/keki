@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import posed, { PoseGroup } from 'react-pose';
-import { TIMEOUT } from 'compositions/constants';
+import { TIMEOUT } from '@components/constants';
 
 class Transition extends PureComponent {
   render() {

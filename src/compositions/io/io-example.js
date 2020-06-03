@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import IO from 'compositions/io';
-import Title from 'compositions/Title';
-import { COLORS } from 'compositions/constants';
+import IO from '@components/io/io';
+import { COLORS } from '@components/constants';
 
 export const Container = styled.div`
   padding: 4rem;
@@ -25,7 +24,7 @@ const IOExample = () => (
   <IO rootMargin="-50px">
     {({ isVisible }) => (
       <Container isVisible={isVisible}>
-        <Title tag="span">IntersectionObserver</Title>
+        <span>IntersectionObserver</span>
       </Container>
     )}
   </IO>

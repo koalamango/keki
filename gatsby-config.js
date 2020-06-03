@@ -5,7 +5,6 @@ const path = require('path');
 const { spaceId, accessToken, snipcart } = process.env;
 
 module.exports = {
-  pathPrefix: '/keki',
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
@@ -20,13 +19,13 @@ module.exports = {
         path: `${__dirname}/src/compositions/images`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `components`,
-        path: `${__dirname}/src/templates`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `components`,
+    //     path: `${__dirname}/src/compositions`,
+    //   },
+    // },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-webpack-size`,
@@ -52,6 +51,20 @@ module.exports = {
         autopop: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-module-resolver',
+      options: {
+        root: './src', // <- will be used as a root dir
+        aliases: {
+          '@components': './compositions', // <- will become ./src/components
+          helpers: './compositions/helpers', // <- will become ./src/helpers
+          static: {
+            root: './public', // <- will used as this alias' root dir
+            alias: './static', // <- will become ./public/static
+          },
+        },
+      },
+    },
   ],
   siteMetadata: {
     siteTitle: `Kēki | Artisan Cakes`,
@@ -60,7 +73,6 @@ module.exports = {
     siteUrl: `https://www.google.co.uk`,
     themeColor: `#000`,
     backgroundColor: `#fff`,
-    pathPrefix: null,
     logo: path.resolve(__dirname, 'src/compositions/images/logo.svg'),
     social: {
       twitter: ``,
