@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from 'compositions/Layout';
 import ProductList from 'compositions/ProductList';
 
-const Index = () => {
+const Shop = () => {
   return (
     <Layout>
       <ProductList />
@@ -10,4 +10,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Shop;

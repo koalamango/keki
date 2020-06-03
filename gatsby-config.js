@@ -20,13 +20,13 @@ module.exports = {
         path: `${__dirname}/src/compositions/images`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `components`,
-    //     path: `${__dirname}/src/templates`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `components`,
+        path: `${__dirname}/src/templates`,
+      },
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-webpack-size`,
@@ -43,23 +43,6 @@ module.exports = {
       options: {
         spaceId,
         accessToken,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-custom-image-component`,
-            options: {
-              componentName: 'image-wrapper',
-              imagePropName: 'src',
-              sharpMethod: 'fluid',
-              quality: 50,
-              maxWidth: 800,
-            },
-          },
-        ],
       },
     },
     {
@@ -103,10 +86,6 @@ module.exports = {
       {
         name: `Cart`,
         link: `#`,
-      },
-      {
-        name: `Contact`,
-        link: `/contact`,
       },
     ],
     footerLinks: [

@@ -9,7 +9,6 @@ import { COLORS, TYPOGRAPHY } from './constants';
 const Products = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 15px;
   text-align: center;
   font-size: ${TYPOGRAPHY.fontSizeMedium};
   text-transform: uppercase;

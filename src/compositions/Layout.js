@@ -157,7 +157,7 @@ const Main = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  padding: 80px 0 0 0;
+  padding: 95px 0 0 0;
   min-height: calc(100vh - 50px);
   ${MEDIA.TABLET`
     padding-top: 60px;
@@ -225,7 +225,9 @@ const Layout = ({ data, children }) => (
         </Box>
       </Header>
     </AnimatedContainer>
-    <Main>{children}</Main>
+    <Box>
+      <Main>{children}</Main>
+    </Box>
     <Footer>
       <Socials>
         {data.site.siteMetadata.footerLinks.map(link => (
