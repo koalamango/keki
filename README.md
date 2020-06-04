@@ -49,3 +49,11 @@ yarn build
 # To test SSR (for Lighthouse etc.)
 yarn ssr
 ```
+
+### Resources
+
+* All images are from [Upsplash](https://unsplash.com/)
+* SVG from [FlatIcon](https://www.flaticon.com/)
+* [Google Webfont](https://fonts.google.com/)
+* [FontAwesome](https://fontawesome.com/v4.7.0/)
+
