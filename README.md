@@ -2,7 +2,7 @@
 
 > A Gatsbyjs Contentful Snipcart Starter
 
-[Online Demo](https://leftovr.netlify.app/)
+[Online Demo](https://keki.netlify.app/)
 
 Kēki is a responsive eCommerce web application which allows users to order artisan cakes from the store.
 
@@ -57,3 +57,6 @@ yarn ssr
 * [Google Webfont](https://fonts.google.com/)
 * [FontAwesome](https://fontawesome.com/v4.7.0/)
 
+### License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
