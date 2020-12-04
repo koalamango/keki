@@ -4,6 +4,18 @@ dotenv.config();
 const path = require('path');
 const { spaceId, accessToken, snipcart } = process.env;
 
+const contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken:
+    process.env.CONTENTFUL_ACCESS_TOKEN ||
+    process.env.CONTENTFUL_DELIVERY_TOKEN,
+};
+
+if (process.env.CONTENTFUL_HOST) {
+  contentfulConfig.host = process.env.CONTENTFUL_HOST;
+  contentfulConfig.accessToken = process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
+}
+
 module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
