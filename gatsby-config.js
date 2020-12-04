@@ -1,8 +1,9 @@
-var dotenv = require('dotenv');
-dotenv.config();
-
+const dotenv = require('dotenv');
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 const path = require('path');
-const { spaceId, accessToken, snipcart } = process.env;
+const { snipcart } = process.env;
 
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
@@ -14,6 +15,14 @@ const contentfulConfig = {
 if (process.env.CONTENTFUL_HOST) {
   contentfulConfig.host = process.env.CONTENTFUL_HOST;
   contentfulConfig.accessToken = process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
+}
+
+const { spaceId, accessToken } = contentfulConfig;
+
+if (!spaceId || !accessToken) {
+  throw new Error(
+    'Contentful spaceId and the access token need to be provided.'
+  );
 }
 
 module.exports = {
@@ -52,8 +61,7 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId,
-        accessToken,
+        options: contentfulConfig,
       },
     },
     {

@@ -29,8 +29,8 @@ It's built on Gastby.js with Contentful CMS (api-based headless CMS solution) an
 Create `.env` on root.
 
 ```
-spaceId = key
-accessToken = Key
+CONTENTFUL_SPACE_ID = key
+CONTENTFUL_ACCESS_TOKEN = Key
 snipcart = Key
 ```
 
