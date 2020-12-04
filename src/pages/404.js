@@ -1,5 +1,4 @@
 import React from 'react';
-import Box from '@components/Box';
 import Layout from '@components/Layout';
 
 const NotFound = () => (
