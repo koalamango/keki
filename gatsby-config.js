@@ -1,7 +1,5 @@
 const dotenv = require('dotenv');
-dotenv.config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+dotenv.config();
 const path = require('path');
 const { snipcart } = process.env;
 
@@ -60,9 +58,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-contentful`,
-      options: {
-        options: contentfulConfig,
-      },
+      options: contentfulConfig,
     },
     {
       resolve: 'gatsby-plugin-snipcartv3',
