@@ -1,7 +1,6 @@
 {
   "name": "keki",
   "description": "Kēki Artisan Cakes: gatsby+contentful+snipcart starter",
-  "author": "Jessie Wang",
   "version": "0.1.0",
   "engines": {
     "node": ">=18.0.0"
