@@ -22,7 +22,8 @@ It's built on Gastby.js with Contentful CMS (api-based headless CMS solution) an
 * [Contenful CMS](https://www.contentful.com/)
 * [Snipcart](https://snipcart.com/)
 * [Styled-components](https://github.com/styled-components/styled-components)
-* [Netlify](https://www.netlify.com/)
+* [Vercel](https://vercel.com/)
+  
 
 ### Getting start
 
