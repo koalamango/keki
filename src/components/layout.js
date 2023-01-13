@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 import GlobalStyle, { COLORS, TYPOGRAPHY, UTILITIES, MEDIA } from '../styles'
@@ -43,15 +43,17 @@ const Header = styled.header`
 const Logo = styled.div`
   width: 100%;
   padding: 8px 16px;
+  
   img {
-    height: auto;
-    width: auto;
+    height: 40px;
+    width: 40px;
     max-height: 40px;
   }
   ${MEDIA.MIN_TABLET`
     padding: 16px 32px;
     img {
-      max-height: 48px;
+      height: 48px;
+      width: 48px;
     }
   `};
 `
@@ -234,13 +236,11 @@ export default function Layout({ children }) {
                       Cart
                     </a>
                   ) : (
-                    <Link
-                      to={link.link}
-                      activeClassName="active"
-                      partiallyActive={true}
+                    <a
+                      href={link.link}
                     >
                       {link.name}
-                    </Link>
+                    </a>
                   )}
                 </li>
               ))}

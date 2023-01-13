@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -47,7 +47,7 @@ export default function Sidebar() {
       <ul>
         {data.allContentfulBlogs.edges.map((items) => (
           <li key={items.node.id}>
-            <Link to={`/blog/${items.node.slug}`}>{items.node.title}</Link>
+            <a href={`/blog/${items.node.slug}`}>{items.node.title}</a>
           </li>
         ))}
       </ul>

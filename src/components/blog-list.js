@@ -1,5 +1,5 @@
-import React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import * as React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY } from '../styles'
 
@@ -81,11 +81,11 @@ export default function BlogList() {
               />
             )}
             <h2>
-              <Link to={`/blog/${items.node.slug}`}>{items.node.title}</Link>
+              <a href={`/blog/${items.node.slug}`}>{items.node.title}</a>
             </h2>
             <p>{items.node.description.description.substring(0, 250)}...</p>
             <Cta>
-              <Link to={`/blog/${items.node.slug}`}>Read more</Link>
+              <a href={`/blog/${items.node.slug}`}>Read more</a>
             </Cta>
           </Post>
         ))}

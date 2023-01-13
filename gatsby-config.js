@@ -68,7 +68,7 @@ module.exports = {
       resolve: 'gatsby-plugin-snipcartv3',
       options: {
         apiKey: process.env.snipcart,
-        autopop: true,
+        autopop: false,
       },
     },
     'gatsby-plugin-sharp',

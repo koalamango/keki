@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 import { MEDIA, COLORS, TYPOGRAPHY } from '../styles'
@@ -47,6 +47,8 @@ const Price = styled.div`
   margin: 10px auto 45px;
 
   .snipcart-add-item svg {
+    width: 25px;
+    height: 23px;
     color: ${COLORS.cart};
     font-size: 23px;
     margin: 0 10px;
@@ -86,7 +88,7 @@ export default function ProductList() {
       <ProductsWrapper>
         {data.allContentfulProduct.edges.map((items) => (
           <ProductWrapper key={items.node.id}>
-            <Link to={`/product/${items.node.slug}`}>
+            <a href={`/product/${items.node.slug}`}>
               {items.node.image && (
                 <GatsbyImage
                   image={getImage(items.node.image)}
@@ -94,9 +96,9 @@ export default function ProductList() {
                   src={items.node.image.url}
                 />
               )}
-            </Link>
+            </a>
             <Name>
-              <Link to={`/product/${items.node.slug}`}>{items.node.name}</Link>
+              <a href={`/product/${items.node.slug}`}>{items.node.name}</a>
             </Name>
             <Price>
               <span>&pound;{items.node.price}.00</span>

@@ -1,8 +1,10 @@
 const path = require('path')
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
-  return graphql(
+
+  // Query for markdown nodes to use in creating pages.
+  const result = await graphql(
     `
       {
         allContentfulProduct {
@@ -24,35 +26,37 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `
   )
-    .then((result) => {
-      if (result.errors) {
-        console.log('Error retrieving contentful data', result.errors)
-      }
-      const productTemplate = path.resolve('src/templates/product-detail.js')
-      const blogTemplate = path.resolve('src/templates/blog-post.js')
 
-      result.data.allContentfulProduct.edges.forEach((edge) => {
-        createPage({
-          path: `/product/${edge.node.slug}`,
-          component: productTemplate,
-          context: {
-            slug: edge.node.slug,
-            id: edge.node.id,
-          },
-        })
-      })
-      result.data.allContentfulBlogs.edges.forEach((data) => {
-        createPage({
-          path: `/blog/${data.node.slug}`,
-          component: blogTemplate,
-          context: {
-            slug: data.node.slug,
-            id: data.node.id,
-          },
-        })
-      })
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
+
+  // Create pages for each blog and product.
+  const productTemplate = path.resolve('src/templates/product-detail.js')
+  const blogTemplate = path.resolve('src/templates/blog-post.js')
+
+  result.data.allContentfulProduct.edges.forEach((edge) => {
+    createPage({
+      path: `/product/${edge.node.slug}`,
+      component: productTemplate,
+      context: {
+        slug: edge.node.slug,
+        id: edge.node.id,
+      },
     })
-    .catch((error) => {
-      console.log('Error retrieving contentful data', error)
+  })
+
+  
+  result.data.allContentfulBlogs.edges.forEach((data) => {
+    createPage({
+      path: `/blog/${data.node.slug}`,
+      component: blogTemplate,
+      context: {
+        slug: data.node.slug,
+        id: data.node.id,
+      },
     })
+  })
 }

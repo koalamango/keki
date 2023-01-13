@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,9 +19,10 @@ const Image = styled.div`
 const Summary = styled.div``
 const Wrapper = styled.div`
   padding: 0 15px;
-  display: flex;
-  justify-content: space-between;
+  
   ${MEDIA.MIN_TABLET`
+    display: flex;
+    justify-content: space-between;
     ${Image}, ${Summary} {
       flex: 48%;
       max-width: 48%;
@@ -64,12 +65,11 @@ export default function ProductDetail(props) {
           <Banner>
             <a
               href="#cart"
-              className="Product snipcart-add-item"
+              className="snipcart-add-item"
               data-item-id={product.slug}
               data-item-price={product.price}
-              data-item-image={product.image === null ? '' : product.image.url}
+              data-item-image={product.image.url}
               data-item-name={product.name}
-              data-item-url="/"
             >
               <FontAwesomeIcon icon="fa-solid fa-cart-plus" />
               Buy Now
