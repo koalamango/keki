@@ -38,16 +38,13 @@ snipcart = Key
 
 ```bash
 # To develop
-yarn develop
+yarn start
 
 # To clear cache
 yarn clean
 
 # To build
 yarn build
-
-# To test SSR (for Lighthouse etc.)
-yarn ssr
 ```
 
 ### Resources

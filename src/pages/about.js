@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Layout from '@components/Layout';
-import styled from 'styled-components';
-import MEDIA from '@components/helpers/mediaTemplates';
-import SideBar from '@components/SideBar';
-import { graphql } from 'gatsby';
+import * as React from 'react'
+import { graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import styled from 'styled-components'
+import Layout from '../components/layout'
+import Sidebar from '../components/sidebar'
+import { MEDIA } from '../styles'
 
 const Wrapper = styled.div`
   padding: 0 15px;
@@ -13,7 +13,10 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
   `};
-`;
+  .gatsby-image-wrapper {
+    margin-bottom: 30px;
+  }
+`
 const Main = styled.div`
   img {
     width: 100%;
@@ -22,39 +25,31 @@ const Main = styled.div`
     flex: 85%;
     max-width: 85%;
   `};
-`;
+`
 const Side = styled.div`
   ${MEDIA.MIN_TABLET`
     margin-left: 30px;
   `};
-`;
+`
 
-const About = data => {
-  const author = data.data.allContentfulAuthor.edges[0].node;
+export default function About(props) {
+  const author = props.data.allContentfulAuthor.edges[0].node
+  const image = getImage(author.photo)
+
   return (
     <Layout>
       <Wrapper>
         <Main>
-          <img src={author.photo.fluid.src} alt={author.name} />
-          <div
-            dangerouslySetInnerHTML={{
-              __html: author.about.childMarkdownRemark.html,
-            }}
-          />
+          {author.photo && <GatsbyImage image={image} alt={author.name} />}
+          {author.about.about}
         </Main>
         <Side>
-          <SideBar />
+          <Sidebar />
         </Side>
       </Wrapper>
     </Layout>
-  );
-};
-
-About.propTypes = {
-  data: PropTypes.object,
-};
-
-export default About;
+  )
+}
 
 export const query = graphql`
   query AboutQuery {
@@ -62,19 +57,17 @@ export const query = graphql`
       edges {
         node {
           photo {
-            fluid {
-              src
-            }
+            gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+            url
+            height
+            width
           }
           about {
-            childMarkdownRemark {
-              rawMarkdownBody
-              html
-            }
+            about
           }
           name
         }
       }
     }
   }
-`;
+`

@@ -1,29 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import posed from 'react-pose';
-import { StaticQuery, graphql, Link } from 'gatsby';
-import styled from 'styled-components';
-import Box from '@components/Box';
-import { COLORS, TYPOGRAPHY, UTILITIES } from '@components/constants';
-import GlobalStyle from '@components/css';
-import Head from '@components/Head';
-import LogoImg from '@components/images/logo.png';
-import MEDIA from '@components/helpers/mediaTemplates';
+import * as React from 'react'
+import { graphql, useStaticQuery, Link } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
+import styled from 'styled-components'
+import GlobalStyle, { COLORS, TYPOGRAPHY, UTILITIES, MEDIA } from '../styles'
+// import Head from './head'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faTwitter,
+  faFacebook,
+  faPinterest,
+  faYoutube,
+  faInstagram,
+} from '@fortawesome/free-brands-svg-icons'
 
-const AnimatedContainer = posed.div({
-  enter: {
-    y: 0,
-    transition: {
-      ease: 'easeInOut',
-    },
-  },
-  exit: {
-    y: '-100%',
-    transition: {
-      ease: 'easeInOut',
-    },
-  },
-});
+library.add(faTwitter, faFacebook, faPinterest, faYoutube, faInstagram)
 
 const Header = styled.header`
   white-space: nowrap;
@@ -48,8 +39,7 @@ const Header = styled.header`
       height: 80px;
     }
   `};
-`;
-
+`
 const Logo = styled.div`
   width: 100%;
   padding: 8px 16px;
@@ -64,7 +54,7 @@ const Logo = styled.div`
       max-height: 48px;
     }
   `};
-`;
+`
 
 const TopNav = styled.nav`
   position: relative;
@@ -85,7 +75,7 @@ const TopNav = styled.nav`
       border-bottom: 1px solid ${COLORS.grayLight};
     }
     ul {
-      background-color: ${COLORS.white}; 
+      background-color: ${COLORS.white};
       height: 0;
       overflow: hidden;
       margin-top: -1px;
@@ -124,7 +114,7 @@ const TopNav = styled.nav`
       line-height: 80px;
     }
   `};
-`;
+`
 
 const NavCheck = styled.input`
   position: absolute;
@@ -138,7 +128,7 @@ const NavCheck = styled.input`
   padding: 0;
   opacity: 0;
   cursor: pointer;
-`;
+`
 
 const NavBtn = styled.div`
   position: absolute;
@@ -150,7 +140,7 @@ const NavBtn = styled.div`
     height: 10px;
     border-top: 2px solid ${COLORS.primary};
   }
-`;
+`
 
 const Main = styled.div`
   display: block;
@@ -158,11 +148,11 @@ const Main = styled.div`
   height: 100%;
   overflow: hidden;
   padding: 95px 0 0 0;
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 100px);
   ${MEDIA.TABLET`
     padding-top: 60px;
   `};
-`;
+`
 
 const Footer = styled.div`
   width: 100%;
@@ -178,22 +168,53 @@ const Footer = styled.div`
   span:last-of-type span {
     display: none;
   }
-`;
+`
 const Socials = styled.div`
   font-size: ${TYPOGRAPHY.fontSizeLarge};
-`;
+  img {
+    max-width: 30px;
+    max-height: 30px;
+  }
+`
+export const Box = styled.div`
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+`
 
-const Layout = ({ data, children }) => (
-  <div>
-    <GlobalStyle />
-    <Head />
-    <AnimatedContainer>
+export default function Layout({ children }) {
+  const data = useStaticQuery(graphql`
+    query SiteMetaData {
+      site {
+        siteMetadata {
+          title
+          headerLinks {
+            name
+            link
+          }
+          footerLinks {
+            name
+            link
+          }
+        }
+      }
+    }
+  `)
+  const info = data.site.siteMetadata
+
+  return (
+    <>
+      <GlobalStyle />
       <Header>
         <Box>
           <Logo>
-            <Link to="/">
-              <img src={LogoImg} alt={data.site.siteMetadata.siteTitle} />
-            </Link>
+            <a href="/" alt="Home">
+              <StaticImage
+                src="../images/logo.png"
+                alt={info.title}
+                placeholder="blurred"
+              />
+            </a>
           </Logo>
           <TopNav>
             <NavCheck type="checkbox" />
@@ -203,10 +224,13 @@ const Layout = ({ data, children }) => (
               <span />
             </NavBtn>
             <ul>
-              {data.site.siteMetadata.headerLinks.map(link => (
+              {info.headerLinks.map((link) => (
                 <li key={link.name}>
                   {link.name === 'Cart' ? (
-                    <a href="#" className="snipcart-summary snipcart-checkout">
+                    <a
+                      href="#cart"
+                      className="snipcart-summary snipcart-checkout"
+                    >
                       Cart
                     </a>
                   ) : (
@@ -224,59 +248,22 @@ const Layout = ({ data, children }) => (
           </TopNav>
         </Box>
       </Header>
-    </AnimatedContainer>
-    <Box>
-      <Main>{children}</Main>
-    </Box>
-    <Footer>
-      <Socials>
-        {data.site.siteMetadata.footerLinks.map(link => (
-          <span key={link.name}>
-            <a href={link.link} target="_blank" rel="noopener noreferrer">
-              <i
-                className={`fa fa-${link.name}`}
-                aria-hidden="true"
-                aria-label={link.name}
-              />
-            </a>
-          </span>
-        ))}
-      </Socials>
-      <p>&copy; {new Date().getFullYear()} All Rights Reserved.</p>
-    </Footer>
-  </div>
-);
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  data: PropTypes.object.isRequired,
-};
-
-const LayoutWithQuery = props => (
-  <StaticQuery
-    query={graphql`
-      query LayoutQuery {
-        site {
-          siteMetadata {
-            siteTitle
-            headerLinks {
-              name
-              link
-            }
-            footerLinks {
-              name
-              link
-            }
-          }
-        }
-      }
-    `}
-    render={data => <Layout data={data} {...props} />}
-  />
-);
-
-LayoutWithQuery.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default LayoutWithQuery;
+      <Box>
+        <Main>{children}</Main>
+      </Box>
+      <Footer>
+        <Socials>
+          {info.footerLinks.map((link) => (
+            <span key={link.name}>
+              <a href={link.link} target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={`fa-brands fa-${link.name}`} />
+              </a>
+            </span>
+          ))}
+        </Socials>
+        <p>&copy; {new Date().getFullYear()} All Rights Reserved.</p>
+      </Footer>
+    </>
+  )
+}

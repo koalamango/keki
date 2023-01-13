@@ -1,13 +1,11 @@
-import React from 'react';
-import Layout from '@components/Layout';
-import ProductList from '@components/ProductList';
+import * as React from 'react'
+import Layout from '../components/layout'
+import ProductList from '../components/product-list'
 
-const Shop = () => {
+export default function Shop() {
   return (
     <Layout>
       <ProductList />
     </Layout>
-  );
-};
-
-export default Shop;
+  )
+}

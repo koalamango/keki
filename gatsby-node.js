@@ -1,27 +1,7 @@
-const path = require('path');
-const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
-
-exports.onCreateWebpackConfig = ({
-  stage,
-  getConfig,
-  rules,
-  loaders,
-  actions,
-}) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-      plugins: [
-        new DirectoryNamedWebpackPlugin({
-          exclude: /node_modules/,
-        }),
-      ],
-    },
-  });
-};
+const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
   return graphql(
     `
       {
@@ -44,35 +24,35 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `
   )
-    .then(result => {
+    .then((result) => {
       if (result.errors) {
-        console.log('Error retrieving contentful data', result.errors);
+        console.log('Error retrieving contentful data', result.errors)
       }
-      const productTemplate = path.resolve('./src/templates/ProductDetail.js');
-      const blogTemplate = path.resolve('./src/templates/BlogDetail.js');
+      const productTemplate = path.resolve('src/templates/product-detail.js')
+      const blogTemplate = path.resolve('src/templates/blog-post.js')
 
-      result.data.allContentfulProduct.edges.forEach(edge => {
+      result.data.allContentfulProduct.edges.forEach((edge) => {
         createPage({
-          path: `/${edge.node.slug}`,
+          path: `/product/${edge.node.slug}`,
           component: productTemplate,
           context: {
             slug: edge.node.slug,
             id: edge.node.id,
           },
-        });
-      });
-      result.data.allContentfulBlogs.edges.forEach(data => {
+        })
+      })
+      result.data.allContentfulBlogs.edges.forEach((data) => {
         createPage({
-          path: `/${data.node.slug}`,
+          path: `/blog/${data.node.slug}`,
           component: blogTemplate,
           context: {
             slug: data.node.slug,
             id: data.node.id,
           },
-        });
-      });
+        })
+      })
     })
-    .catch(error => {
-      console.log('Error retrieving contentful data', error);
-    });
-};
+    .catch((error) => {
+      console.log('Error retrieving contentful data', error)
+    })
+}

@@ -1,9 +1,9 @@
-import React from 'react';
-import Layout from 'compositions/Layout';
-import styled from 'styled-components';
-import MEDIA from '@components/helpers/mediaTemplates';
-import BlogList from '@components/BlogList';
-import SideBar from '@components/SideBar';
+import * as React from 'react'
+import styled from 'styled-components'
+import Layout from '../components/layout'
+import Sidebar from '../components/sidebar'
+import BlogList from '../components/blog-list'
+import { MEDIA } from '../styles'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -27,18 +27,18 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`
 const Main = styled.div`
   ${MEDIA.MIN_TABLET`
     flex: 85%;
     max-width: 85%;
   `};
-`;
+`
 const Side = styled.div`
   ${MEDIA.MIN_TABLET`
     margin-left: 30px;
   `};
-`;
+`
 
 const Blog = () => {
   return (
@@ -48,11 +48,11 @@ const Blog = () => {
           <BlogList />
         </Main>
         <Side>
-          <SideBar />
+          <Sidebar />
         </Side>
       </Wrapper>
     </Layout>
-  );
-};
+  )
+}
 
-export default Blog;
+export default Blog

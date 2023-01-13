@@ -12,7 +12,7 @@ yarn-error.log*
 .cache/
 public
 build
-
+dist
 .idea/*
 yarn.lock
 
